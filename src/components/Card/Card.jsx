@@ -4,6 +4,8 @@ import { faGithub, faYoutube } from '@fortawesome/free-brands-svg-icons';
 import { faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons'
 import './Card.scss';
 import museImage from '../../assets/img/muse.jpg';
+import axeLogo from '../../assets/img/AxeSentinel_Logo.webp';
+
 import 'animate.css';
 
 const Card = () => {
@@ -11,7 +13,7 @@ const Card = () => {
     <div id="card-group">
       <div className="card-wrapper animate__animated animate__zoomIn">
         <a href="#" className="img-wrapper">
-          <img src={museImage} alt="project image" />
+          <img src={axeLogo} alt="project image" />
         </a>
         <div className="desc-wrapper">
           <h3>Project 1</h3>
@@ -19,8 +21,8 @@ const Card = () => {
           <a href="#" className="btn-link">Learn More</a>
           <div className="social-wrapper">
             <a href="#" className="outside-link github-link"><FontAwesomeIcon icon={faGithub} /></a>
-            <a href="" className="outside-link youtube-link"><FontAwesomeIcon icon={faYoutube} /></a>
-            <a href="" className="outside-link demo-link"><FontAwesomeIcon icon={faArrowUpRightFromSquare} /></a>
+            <a href="#" className="outside-link youtube-link"><FontAwesomeIcon icon={faYoutube} /></a>
+            <a href="#" className="outside-link demo-link"><FontAwesomeIcon icon={faArrowUpRightFromSquare} /></a>
           </div>
         </div>
       </div>
