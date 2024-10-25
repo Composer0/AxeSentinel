@@ -1,0 +1,33 @@
+.radio-buttons-container {
+    display: flex;
+}
+
+.radio-button-label {
+    margin-right: 10px;
+    position: relative;
+}
+
+.radio-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.radio-button input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.radio-button input:checked + .radio-button {
+    background-color: #007bff;
+    color: #fff;
+    border-color: #007bff;
+}
