@@ -1,0 +1,77 @@
+.accessibility-tile {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 16px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: #f9f9f9;
+
+    .description, .help, .details { color: black; };
+    .impact {
+        text-transform: uppercase;
+        margin-top: 0;
+        text-align: left;
+        margin-bottom: 0px;
+        font-size: 1.4em;
+    }
+
+    .description {
+        font-size: 1.1em;
+        text-align: left;
+        margin-block: 5px;
+    }
+
+    .help {
+        font-style: italic;
+        text-align: left;
+    }
+
+    details {
+        margin-top: 12px;
+        text-align: left;
+    }
+
+    ul {
+        padding-left: 20px;
+    }
+
+    &.impact-critical {
+        border-left: 5px solid #d32f2f;
+        .impact {
+            color: #d32f2f;
+            font-weight: 700;
+        }
+    }
+
+    &.impact-serious {
+        border-left: 5px solid #f57c00;
+        .impact {
+            color: #f57c00;
+            font-weight: 600;
+        }
+    }
+
+    &.impact-moderate {
+        border-left: 5px solid #fbc02d;
+        .impact {
+            color: #fbc02d;
+            font-weight: 500;
+        }
+    }
+
+    &.impact-minor {
+        border-left: 5px solid #4caf50;
+        .impact {
+            color: #4caf50;
+            font-weight: 400;
+        }
+    }
+
+    &.impact-unknown {
+        border-left: 5px solid #9e9e9e;
+        .impact {
+            color: #9e9e9e;
+            font-weight: 400;
+        }
+    }
+}

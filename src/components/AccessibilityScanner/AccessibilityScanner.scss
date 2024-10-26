@@ -1,0 +1,58 @@
+.scanner-section {
+    .scanner-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+        margin-top: 40px;
+        justify-content: center;
+
+        .axe-sentinel-logo {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 10px;
+        }
+
+        h2 {
+            margin: 0;
+        }
+    }
+    
+    h2 { color: rgb(255, 187, 0); };
+    .conformance-level {
+        h3 { margin-bottom: 0; };
+        .level { 
+            color: rgb(255, 187, 0);
+            font-weight: 600;
+        };
+    } 
+
+    .results-container { margin-top: 20px; }
+
+    .results-scrollable {
+        max-height: 520px;
+        overflow-y: auto;
+        border: 1px solid transparent;
+        border-radius: 4px;
+        padding-right: 5px;
+        border-bottom: 2px solid rgb(255, 187, 0);
+
+        &::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        &::-webkit-scrollbar-track {
+            background: rgb(87, 243, 243);
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background: teal;
+            border-radius: 4px;
+        }
+
+        &::-webkit-scrollbar-thumb:hover {
+            background: maroon;
+        }
+    }
+}

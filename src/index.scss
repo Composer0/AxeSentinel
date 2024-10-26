@@ -30,13 +30,16 @@ body {
   display: flex;
   place-items: center;
   min-width: 320px;
-  background-color: $gray;
+  background-color: rgb(21, 48, 58);
+}
+
+h1, h2, h3, h4, h5, h6, p {
+  color: $blue;
 }
 
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
-  color: $blue;
 }
 
 button {
