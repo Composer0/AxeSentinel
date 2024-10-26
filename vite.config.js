@@ -10,7 +10,8 @@ export default defineConfig({
         additionalData: `@import "normalize.css/normalize.css";`,
       },
     },
-    // Explicitly specify the path to node_modules
-    include: [/node_modules/],
+  },
+  build: {
+    outDir: 'dist', // Ensure your build output is directed to the dist folder
   },
 });
