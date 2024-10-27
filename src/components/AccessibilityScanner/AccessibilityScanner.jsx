@@ -11,10 +11,12 @@ const AccessibilityScanner = ({ url }) => {
     const [error, setError] = useState(null);
 
     const determineConformanceLevel = (violations) => {
-        const hasViolation = (level) => violations.some(v => v.tags.includes(`wcag${level}`));
-        if (hasViolation('a')) return 'Does not meet WCAG Level A';
-        if (hasViolation('aa')) return 'Meets WCAG Level A';
-        if (hasViolation('aaa')) return 'Meets WCAG Level AA';
+        if (violations) {
+            const hasViolation = (level) => violations.some(v => v.tags.includes(`wcag${level}`));
+            if (hasViolation('a')) return 'Does not meet WCAG Level A';
+            if (hasViolation('aa')) return 'Meets WCAG Level A';
+            if (hasViolation('aaa')) return 'Meets WCAG Level AA';
+        }
         return 'Meets WCAG Level AAA';
     };
 
