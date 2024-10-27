@@ -33,13 +33,12 @@
     .helpUrl {
         color: blue;
         text-align: left;
-        &:hover {
-            color:#00bdca;
-            cursor: pointer;
-        }
-        &:visited {
-            color: rebeccapurple;
-        }
+        &:hover { color:#00bdca; }
+        &:visited { color: rebeccapurple; }
+    }
+
+    summary, .helpUrl:hover {
+        cursor: pointer;
     }
 
     details {

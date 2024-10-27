@@ -10,14 +10,25 @@ const AccessibilityScanner = ({ url }) => {
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);
 
-    const determineConformanceLevel = (violations) => {
-        if (violations) {
-            const hasViolation = (level) => violations.some(v => v.tags.includes(`wcag${level}`));
-            if (hasViolation('a')) return 'Does not meet WCAG Level A';
-            if (hasViolation('aa')) return 'Meets WCAG Level A';
-            if (hasViolation('aaa')) return 'Meets WCAG Level AA';
-        }
-        return 'Meets WCAG Level AAA';
+    // Total WCAG Level A criteria (for approximation)
+    const TOTAL_LEVEL_A_CRITERIA = 30;
+
+    // const determineConformanceLevel = (violations) => {
+    //     if (violations) {
+    //         const hasViolation = (level) => violations.some(v => v.tags.includes(`wcag2${level}`));
+            
+    //         if (hasViolation('a')) return 'Does not meet WCAG Level A';
+    //         if (hasViolation('aa')) return 'Meets WCAG Level A';
+    //         if (hasViolation('aaa')) return 'Meets WCAG Level AA';
+    //         return 'Meets WCAG Level AAA';
+    //     }
+    // };
+
+    const calculateCompliancePercentage = (violations) => {
+        const unmetCriteria = violations.length;
+        const metCriteria = TOTAL_LEVEL_A_CRITERIA - unmetCriteria;
+        const percentage = Math.max((metCriteria / TOTAL_LEVEL_A_CRITERIA) * 100, 0);
+        return `${Math.min(percentage.toFixed(2), 100)}% WCAG Level A Compliance`;
     };
 
     const scanAccessibility = async () => {
@@ -49,7 +60,8 @@ const AccessibilityScanner = ({ url }) => {
                 <div className="results-container">
                     <div className="conformance-level">
                         <h3>WCAG Conformance Level:</h3>
-                        <span className="level">{determineConformanceLevel(results.violations)}</span>
+                        {/* <span className="level">{determineConformanceLevel(results.violations)}</span> */}
+                        <div className='level'>{calculateCompliancePercentage(results.violations)}</div>
                     </div>
                     <h3 className='accessibilityIssues'>Accessibility Issues: {results.violations.length}</h3>
                     {results.violations.length > 0 && (
