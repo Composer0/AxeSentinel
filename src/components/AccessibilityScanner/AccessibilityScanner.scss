@@ -1,3 +1,5 @@
+@import '../../base/main.scss';
+
 .scanner-section {
     .scanner-header {
         display: flex;
@@ -12,6 +14,11 @@
             border-radius: 50%;
             object-fit: cover;
             margin-right: 10px;
+            will-change: filter;
+            transition: filter 300ms;
+            &:hover {
+                filter: drop-shadow(0 0 2em $yellow);
+            }
         }
 
         h2 {
@@ -23,7 +30,7 @@
     .conformance-level {
         h3 { margin-bottom: 0; };
         .level { 
-            color: rgb(255, 187, 0);
+            color: $yellow;
             font-weight: 600;
         };
     }
@@ -41,7 +48,7 @@
         border: 1px solid transparent;
         border-radius: 4px;
         padding-right: 5px;
-        border-bottom: 2px solid rgb(255, 187, 0);
+        border-bottom: 4px solid $yellow;
         margin-block: 20px;
 
         &::-webkit-scrollbar {

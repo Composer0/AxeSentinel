@@ -1,6 +1,8 @@
+@import '../../base/main.scss';
+
 .download-button {
-    background-color: #4CAF50;
-    border: none;
+    background-color: $green;
+    border: 1px solid $green;
     color: white;
     padding: 10px 20px;
     text-align: center;
@@ -13,7 +15,7 @@
     transition: background-color 0.3s, opacity 0.3s;
 
     &:hover:not(:disabled) {
-        background-color: #45a049;
+        background-color: $white;
     }
 
     &:disabled {

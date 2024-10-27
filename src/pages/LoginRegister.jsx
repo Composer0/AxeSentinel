@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import Login from './Login';
-import Register from './Register';
-import './LoginRegister.scss';
-import axeSentinelLogo from '../../assets/img/AxeSentinel_Logo.webp';
+import Login from '../components/LoginRegister/Login';
+import Register from '../components/LoginRegister/Register';
+import '../components/LoginRegister/LoginRegister.scss';
+import axeSentinelLogo from "../assets/img/AxeSentinel_Logo.webp";
 
 const LoginRegister = ({ onLogin }) => {
     const [isLoginView, setIsLoginView] = useState(true);

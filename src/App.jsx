@@ -1,15 +1,15 @@
 import { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import './App.scss';
 import 'animate.css';
-import BrowserServe from './components/BrowserServe/BrowserServe.jsx';
-import AccessibilityScanner from './components/AccessibilityScanner/AccessibilityScanner.jsx';
-import LoginRegister from './components/LoginRegister/LoginRegister.jsx';
 import LoadingOverlay from './components/LoadingOverlay/LoadingOverlay.jsx';
 import { CopyProvider } from './context/CopyContext';
-
+import Sidebar from './components/Sidebar/Sidebar.jsx';
+import LoginRegister from './pages/LoginRegister.jsx';
+import ScannerPage from './pages/ScannerPage.jsx';
+import SavedReports from './pages/SavedReports.jsx';
 
 function App() {
-    const [url, setUrl] = useState('https://www.taxslayer.com');
     const [userAuth, setUserAuth] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
     const [userEmail, setUserEmail] = useState('');
@@ -37,10 +37,6 @@ function App() {
         };
     }, []);
 
-    const handleUrlChange = (newUrl) => {
-        setUrl(newUrl);
-    };
-
     const handleLogout = () => {
         localStorage.setItem('userAuth', 'false');
         localStorage.removeItem('userEmail');
@@ -60,26 +56,29 @@ function App() {
     };
 
     return (
-        <CopyProvider>
-            <main id="AxeSentinel">
-                {isLoading && <LoadingOverlay email={userEmail} />}
-                {userAuth ? (
-                    <div className="side-by-side">
-                        <div id="AccessibilityScanner">
-                            <AccessibilityScanner url={url} />
+        <Router>
+            <CopyProvider>
+                <main id="AxeSentinel">
+                    {isLoading && <LoadingOverlay email={userEmail} />}
+                    {userAuth ? (
+                        <div className="app-layout">
+                            <Sidebar onLogout={handleLogout} />
+                            <div className='content-area'>
+                            <Routes>
+                                <Route path="/scanner" element={<ScannerPage />} />
+                                <Route path="/saved-reports" element={<SavedReports />} />
+                                <Route path="*" element={<Navigate to="/scanner" replace />} />
+                            </Routes>
+                            </div>
                         </div>
-                        <div id="BrowserServe">
-                            <BrowserServe url={url} onUrlChange={handleUrlChange} />
+                    ) : (
+                        <div id="LoginRegister">
+                            <LoginRegister onLogin={handleLogin} />
                         </div>
-                        <button className="logout-button" onClick={handleLogout}>Logout</button>
-                    </div>
-                ) : (
-                    <div id="LoginRegister">
-                        <LoginRegister onLogin={handleLogin} />
-                    </div>
-                )}
-            </main>
-        </CopyProvider>
+                    )}
+                </main>
+            </CopyProvider>
+        </Router>
     );
 }
 

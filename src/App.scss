@@ -14,6 +14,9 @@
   align-items: center;
   height: 100vh;
   width: 100%;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
 }
 
 .side-by-side {
@@ -30,7 +33,7 @@
   transition: filter 300ms;
 }
 .logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+  filter: drop-shadow(0 0 2em $yellow);
 }
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
@@ -56,9 +59,25 @@
   flex-direction: column;
   justify-content: flex-start;
   width: 100%;
-  max-width: 590px;
   margin-inline: 10px;
   align-items: center;
+}
+
+#AccessibilityScanner {
+  margin-left: 80px;
+}
+
+#BrowserServe {
+  max-width: 70%;
+}
+
+.app-layout {
+  display: flex;
+  width: 100vw;
+}
+
+.content-area {
+  width: 100%;
 }
 
 .card {

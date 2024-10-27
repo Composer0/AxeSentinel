@@ -48,7 +48,9 @@ const AccessibilityScanner = ({ url }) => {
     return (
         <div className="scanner-section">
             <div className="scanner-header">
-                <img src={axeSentinelLogo} alt="AxeSentinel Logo" className="axe-sentinel-logo" />
+                <a href='www.orionpalmer.com' target="_blank">
+                    <img src={axeSentinelLogo} alt="AxeSentinel Logo" className="axe-sentinel-logo" />
+                </a>
                 <h2>AxeSentinel</h2>
             </div>
             <p>Current URL: {url}</p>
