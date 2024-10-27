@@ -28,6 +28,7 @@
                 width: 90%;
                 text-align: left;
                 cursor: pointer;
+                width: 100%;
 
                 &:hover {
                     background-color: $blue;
@@ -39,6 +40,13 @@
                 font-weight: bold;
                 border-bottom: 3px solid $blue;
             }
+        }
+    }
+    .accountLinks {
+        top: unset;
+        bottom: 20px;
+        li {
+            width: 137px;
         }
     }
 }

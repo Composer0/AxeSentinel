@@ -14,6 +14,8 @@ const Sidebar = ({ onLogout }) => {
                 <li className={location.pathname === '/saved-reports' ? 'active' : ''}>
                     <Link to="/saved-reports">Saved Reports</Link>
                 </li>
+            </ul>
+            <ul className='accountLinks'>
                 <li>
                     <Link onClick={onLogout}>Logout</Link>
                 </li>
