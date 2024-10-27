@@ -1,55 +1,78 @@
-import React, {useEffect} from 'react';
-import './LoginRegister.scss'
-import { Register } from '../../firebase/connection.jsx'
+import React, { useState } from 'react';
 
-const RegisterPage = () => {
+const Register = ({ onRegister }) => {
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
+    const [username, setUsername] = useState('');
 
-  useEffect(() => {
-    const handleKeyPress = (event) => {
-        if (event.keyCode === 13) {
-            if (document.activeElement.id === 'password') {
-                handleRegister();
-            }
-        }
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const userData = {
+            email,
+            password,
+            firstName,
+            lastName
+        };
+        console.log('Registering with:', userData); // Debug log
+        onRegister(userData);
     };
 
-    document.addEventListener('keypress', handleKeyPress);
+    return (
+      <div id="register-container">
+<h1 className="register-heading">Register</h1>
+        <form onSubmit={handleSubmit}>
+            <div className="input-wrapper">
+  <label htmlFor="username" className="input-label">Username</label>
+  <input
+                type="username"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+                placeholder="username"
+                required
+            />
+</div>
+<div className="input-wrapper">
+  <label htmlFor="firstName" className="input-label">First Name</label>
+  <input
+                type="text"
+                value={firstName}
+                onChange={(e) => setFirstName(e.target.value)}
+                placeholder="First Name"
+                required
+            />
+</div>
+<div className="input-wrapper">
+  <label htmlFor="email" className="input-label">Email</label>
+  <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Email"
+                required
+            />
+</div>
+<div className="input-wrapper">
+  <label htmlFor="password" className="input-label">Password</label>
+  <input
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="Password"
+                required
+            />
+</div>
+<div className="register-buttons">
+            <button type="submit">Register</button>
+            <div className="specialSigninButtons">
+              <button id="google-sign-in" className="google-sign-in-button sign-in-button">Sign In with Google</button>
+              <button id="apple-sign-in" className="apple-sign-in-button sign-in-button">Sign In with Apple</button>
+            </div>
+</div>
+        </form>
+      </div>
+    );
+};
 
-    return () => {
-        document.removeEventListener('keypress', handleKeyPress);
-    };
-}, []);
-
-  const handleRegister = () => {
-    Register();
-  }
-
-  return (
-    <div id="register-container">
-      <h1 className="register-heading">Register</h1>
-      <div className="input-wrapper">
-        <label htmlFor="username" className="input-label">Username</label>
-        <input type="text" id="username" className="input-field" />
-      </div>
-      <div className="input-wrapper">
-        <label htmlFor="firstName" className="input-label">First Name</label>
-        <input type="text" id="firstName" className="input-field" />
-      </div>
-      <div className="input-wrapper">
-        <label htmlFor="email" className="input-label">Email</label>
-        <input type="email" id="email" className="input-field" />
-      </div>
-      <div className="input-wrapper">
-        <label htmlFor="password" className="input-label">Password</label>
-        <input type="password" id="password" className="input-field" />
-      </div>
-      <div className='register-buttons'>
-        <button id="sign-in" className="sign-in-button" onClick={handleRegister}>Sign In</button>
-        <button id="google-sign-in" className="google-sign-in-button sign-in-button">Sign In with Google</button>
-        <button id="apple-sign-in" className="apple-sign-in-button sign-in-button">Sign In with Apple</button>
-      </div>
-    </div>
-  );
-}
-
-export default RegisterPage;
+export default Register;

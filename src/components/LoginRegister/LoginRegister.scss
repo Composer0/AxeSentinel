@@ -1,6 +1,14 @@
 @import '../../base/main.scss';
 
 
+.login-register-container, #LoginRegister {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 80vh;
+}
+
 #login-container, #register-container {
     display: flex;
     flex-direction: column;
@@ -12,7 +20,10 @@
     .input-wrapper {
         display: flex;
         flex-direction: column;
-        label { font-weight: bold; }
+        label { 
+            font-weight: bold;
+            color: $blue; 
+        }
         margin-bottom: 12px;
 
         input {
@@ -41,5 +52,12 @@
         background-color: white;
         border: 2px solid $blue;
         color: $blue;
+    }
+    
+    .specialSigninButtons {
+        display: flex;
+        margin-top: 10px;
+        flex-direction: row;
+        gap: 10px;
     }
 }

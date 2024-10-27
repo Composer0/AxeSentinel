@@ -5,6 +5,9 @@
     margin-bottom: 16px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     background-color: #f9f9f9;
+    position: relative;
+    display: flex;
+    flex-direction: column;
 
     .description, .help, .details { color: black; };
     .impact {
@@ -24,6 +27,19 @@
     .help {
         font-style: italic;
         text-align: left;
+        margin-bottom: 0;;
+    }
+
+    .helpUrl {
+        color: blue;
+        text-align: left;
+        &:hover {
+            color:#00bdca;
+            cursor: pointer;
+        }
+        &:visited {
+            color: rebeccapurple;
+        }
     }
 
     details {

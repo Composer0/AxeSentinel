@@ -1,48 +1,49 @@
-import React, {useEffect} from 'react';
-import './LoginRegister.scss';
-import { Login } from '../../firebase/connection.jsx';
+import React, { useState } from 'react';
 
+const Login = ({ onLogin }) => {
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
 
-const LoginPage = () => {
-
-    useEffect(() => {
-        const handleKeyPress = (event) => {
-            if (event.keyCode === 13) {
-                if (document.activeElement.id === 'password') {
-                    handleLogin();
-                }
-            }
-        };
-
-        document.addEventListener('keypress', handleKeyPress);
-
-        return () => {
-            document.removeEventListener('keypress', handleKeyPress);
-        };
-    }, []);
-
-    const handleLogin = () => {
-        Login();
-      }
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log('Submitting:', email, password); // Debug log
+        onLogin(email, password);
+    };
 
     return (
-        <div id="login-container">
-        <h1 className="login-heading">Login</h1>
-        <div className="input-wrapper">
-            <label htmlFor="email" className="input-label">Email</label>
-            <input type="text" id="email" className="input-field" />
-        </div>
-        <div className="input-wrapper">
-            <label htmlFor="password" className="input-label">Password</label>
-            <input type="password" id="password" className="input-field" />
-        </div>
-        <div className='login-buttons'>
-            <button id="sign-in" className="sign-in-button" onClick={handleLogin}>Sign In</button>
-            <button id="google-sign-in" className="google-sign-in-button sign-in-button">Sign In with Google</button>
-            <button id="apple-sign-in" className="apple-sign-in-button sign-in-button">Sign In with Apple</button>
-        </div>
+           <div id="login-container">
+            <h1 className="login-heading">Login</h1>
+            <form onSubmit={handleSubmit}>
+                <div className="input-wrapper">
+                    <label htmlFor="email" className="input-label">Email</label>
+                    <input
+                        type="email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        placeholder="Email"
+                        required
+                    />
+                </div>
+                <div className="input-wrapper">
+                    <label htmlFor="password" className="input-label">Password</label>
+                    <input
+                        type="password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        placeholder="Password"
+                        required
+                    />
+                </div>
+                <div className="login-button">
+                    <button type="submit">Login</button>
+                </div>
+            </form>
+            <div className="specialSigninButtons">
+                <button id="google-sign-in" className="google-sign-in-button sign-in-button">Sign In with Google</button>
+                <button id="apple-sign-in" className="apple-sign-in-button sign-in-button">Sign In with Apple</button>
+            </div>
         </div>
     );
-}
+};
 
-export default LoginPage;
+export default Login;

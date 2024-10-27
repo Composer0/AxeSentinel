@@ -2,19 +2,18 @@
 import { initializeApp } from "firebase/app";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 import { getDatabase, ref, set } from "firebase/database";
-import { createStore, applyMiddleware } from 'redux';
+// import { createStore, applyMiddleware } from 'redux';
 // import { Dispatch } from 'redux';
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyA5RE_8NpYOt98KStUn6sv9qprucGaDBvY",
-  authDomain: "medical-46e8f.firebaseapp.com",
-  projectId: "medical-46e8f",
-  storageBucket: "medical-46e8f.appspot.com",
-  messagingSenderId: "75933386452",
-  appId: "1:75933386452:web:09fed232df70bfe9cedd41",
-  measurementId: "G-0ZYJHNYQZJ"
-};
+    apiKey: "AIzaSyA49s5R9olSIg9FVhsywlvyfpV91BaIKy4",
+    authDomain: "axesentinel.firebaseapp.com",
+    projectId: "axesentinel",
+    storageBucket: "axesentinel.appspot.com",
+    messagingSenderId: "340836414667",
+    appId: "1:340836414667:web:defbdf8966919f98fb974e"
+  };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);

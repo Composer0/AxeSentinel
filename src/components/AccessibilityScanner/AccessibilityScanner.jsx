@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import './AccessibilityScanner.scss';
 import axios from 'axios';
-import AccessibilityTile from '../AccessibilityTile/AccessibilityTile';
+import TileCard from '../TileCard/TileCard';
 import axeSentinelLogo from '../../assets/img/AxeSentinel_Logo.webp';
+import DownloadButton from '../DownloadButton/DownloadButton';
 
 const AccessibilityScanner = ({ url }) => {
     const [results, setResults] = useState(null);
@@ -48,10 +49,17 @@ const AccessibilityScanner = ({ url }) => {
                         <h3>WCAG Conformance Level:</h3>
                         <span className="level">{determineConformanceLevel(results.violations)}</span>
                     </div>
-                    <h3>Accessibility Issues: {results.violations.length}</h3>
+                    <h3 className='accessibilityIssues'>Accessibility Issues: {results.violations.length}</h3>
+                    {results.violations.length > 0 && (
+                        <DownloadButton 
+                            label="Download Violations Report"
+                            downloadType="scanner"
+                            data={{ url, items: results.violations }}
+                        />
+                    )}
                     <div className="results-scrollable">
                         {results.violations.map((violation, index) => (
-                            <AccessibilityTile key={index} violation={violation} index={index + 1} />
+                            <TileCard key={index} violation={violation} index={index + 1} />
                         ))}
                     </div>
                 </div>

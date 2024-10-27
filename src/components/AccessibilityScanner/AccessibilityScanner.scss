@@ -26,7 +26,12 @@
             color: rgb(255, 187, 0);
             font-weight: 600;
         };
-    } 
+    }
+
+    .accessibilityIssues {
+        margin-top: 0;
+        margin-bottom: 4px;
+    }
 
     .results-container { margin-top: 20px; }
 
@@ -37,6 +42,7 @@
         border-radius: 4px;
         padding-right: 5px;
         border-bottom: 2px solid rgb(255, 187, 0);
+        margin-block: 20px;
 
         &::-webkit-scrollbar {
             width: 8px;
@@ -44,6 +50,7 @@
 
         &::-webkit-scrollbar-track {
             background: rgb(87, 243, 243);
+            border-radius: 4px;
         }
 
         &::-webkit-scrollbar-thumb {
